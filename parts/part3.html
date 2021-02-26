@@ -1,0 +1,1163 @@
+<html>
+<head>
+<title>Javascript Lecture Notes</title>
+
+<script language="JavaScript">
+<!-- Hide
+
+function countUp()
+{
+    for (x = 0; x <= 5; x++)
+    {
+        alert('x = ' + x)
+    }
+}
+
+function countDown()
+{
+    for (x = 5; x >= 0; x--)
+    {
+        alert('x = ' + x)
+    }
+}
+
+function delayLoop()
+{
+    var x = 500000;
+    alert("Starting countdown...");
+    while(x > 0){x--; };
+    alert("Finished!");
+}
+
+function checkPassword()
+{
+    var password = "CS7000";
+    var passwordNotVerified = true; 
+    while (passwordNotVerified == true) 
+    { 
+        input = prompt("Please enter your password", ""); 
+        if (input == password) 
+        { 
+            passwordNotVerified = false; 
+        } 
+        else 
+        { 
+            alert("Invalid password - try again") 
+        } 
+    }
+}
+
+function checkNumber()
+{
+    var amount = prompt("Please enter a number between 1 and 9", ""); 
+    while (amount < 1 || amount > 9) 
+    {
+        alert("Number must be between 1 and 9"); 
+        amount = prompt("Please enter a number between 1 and 9", ""); 
+    }
+}
+
+// Hide End -->
+</script>
+
+<style>
+    code{font-family:courier}
+</style>
+ 
+</head>
+
+<body background="background_cam.gif">
+
+<hr size=1 color="#006699" noshade>
+<font FACE="Verdana, Arial, Helvetica, sans-serif">
+<b>Part 3</b>
+</font>
+<hr size=1 color="#006699" noshade>
+
+<h2>JavaScript Comparison Operators</h2>
+
+<p>As well as needing to assign values to variables, we sometime need to <u>compare</u> variables or literals.</p>
+
+<p>We do this using <i>Comparison Operators</i>.</p>
+
+<p>Comparison Operators compare two values and produce an output which is either <u>true</u> or <u>false</u>.</p>
+
+<p>For example, suppose we have two variables which are both numeric (i.e., they both hold numbers):</p>
+
+<center>
+<code>examPasses</code>
+
+<p>and</p>
+
+<code>totalStudents</code>
+</center>
+
+<p>&nbsp;</p>
+
+<p>If we compare them, there are two possible outcomes:</p>
+
+<ul>
+    <li><p>They have the same value</p></li>
+    <li><p>They do not have the same value</p></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>Therefore, we can make statements like these:<p>
+
+<ul>
+    <li><p>They are the same</p></li>
+    <li><p>They are the different</p></li>
+    <li><p>The first is larger than the second</p></li>
+    <li><p>The first is smaller than the second</p></li>
+</ul>
+
+<p>... and then perform a comparison to determine whether the statement is true or false.</p>
+
+<p>&nbsp;</p>
+
+<p>The basic comparison operator is:</p>
+
+<center><code>==</code></p></center>
+
+<p>(i.e., two equals signs, one after the other with no space in between).</p>
+
+<p>It means 'is equal to'. Compare this with the <i>assignment operator</i>, <code>=</code>, which means 'becomes equal to'. The assignment operator <i>makes</i> two things equal to one another, the comparison operator tests to see if they are <i>already</i> equal to one another.</p>
+
+<p>Here's an example showing how the comparison operator might be used:</p>
+
+<table width=80%>
+    <tr>
+        <td width=15%>&nbsp;</td>
+        <td width=85%>
+            <code>examPasses == totalStudents</code></td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> and 
+               <code>totalStudents</code> have 
+               <u>the same</u> value, the comparison would return 
+               <code>true</code> as a result.</td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> and 
+               <code>totalStudents</code> have 
+               <u>different</u> values, the comparison would return 
+               <code>false</code> as a result.</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+
+<p>Another comparison operator is:</p>
+
+<center><code>!=</code></center>
+
+<p>(i.e., an exclamation mark followed by an equals sign, with no space in between).</p>
+
+
+<p>It means 'is NOT equal to'.</p>
+
+<p>For example:</p>
+
+<table width=80%>
+    <tr>
+        <td width=15%>&nbsp;</td>
+        <td width=85%>
+            <code>examPasses != totalStudents</code></td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> and 
+               <code>totalStudents</code> have 
+               <u>the same</u> value, the comparison would return 
+                <code>false</code> as a result.</td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> and 
+               <code>totalStudents</code> have 
+               <u>different</u> values, the comparison would return 
+               <code>true</code> as a result.</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Two other commonly-used comparison operators are:</p>
+
+<center>
+<code>&lt;</code>
+
+<p>and</p>
+
+<code>&gt;</code>
+</center>
+
+<p>&nbsp;</p>
+
+<table width=100%>
+    <tr>
+        <td width=10%>&nbsp;</td>
+        <td width=10%><code>&lt;</code></td>
+        <td width=80%>means 'less than'</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+        <td width=10%>&nbsp;</td>
+        <td width=10%><code>&gt;</code></td>
+        <td width=80%>means 'greater than'</td>
+    </tr>
+</table>
+
+<p>For example:</p>
+
+<table width=80%>
+    <tr>
+        <td width=15%>&nbsp;</td>
+        <td width=85%>
+            <code>examPasses &lt; totalStudents</code></td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> is 
+            <u>less than</u> <code>totalStudents</code>,
+            the comparison would return <code>true</code>
+            as a result.</td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> is 
+            <u>more than</u> <code>totalStudents</code>, 
+            the comparison would return <code>false</code>
+            as a result.</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Another example:</p>
+
+<table width=80%>
+    <tr>
+        <td width=15%>&nbsp;</td>
+        <td width=85%>
+            <code>examPasses &gt; totalStudents</code></td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> is 
+             <u>more than</u> <code>totalStudents</code>,
+             the comparison would return <code>true</code>
+             as a result.</td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> is 
+            <u>less than</u> <code>totalStudents</code>,
+            the comparison  would return <code>false</code>
+            as a result.</td>
+    </tr>
+</table>
+
+<p>As with some of the other 0perators we have encountered, comparison operators can be combined in various ways.</p>
+
+<center>
+<code>&lt;= </code>
+<p>means</p> 
+<p>'less than or equal to'.</p>
+</center>
+
+<p>For example:</p>
+
+<table width=80%>
+    <tr>
+        <td width=15%>&nbsp;</td>
+        <td width=85%>
+            <code>examPasses &lt;= totalStudents</code></td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> is 
+           <u>less than or equal to</u> <code>
+           totalStudents</code>, the comparison would return 
+           <code>true</code> as a result.</td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> is 
+               <u>more than</u> <code>totalStudents</code>, 
+               the comparison would return <code> 
+               false</code> as a result.</td>
+    </tr>
+</table>
+
+<p>Also:</p>
+
+<center>
+<code>&gt;= </code>
+<p>means</p> 
+<p>'greater than or equal to'.</p>
+</center>
+
+<p>For example:</p>
+
+<table width=80%>
+    <tr>
+        <td width=15%>&nbsp;</td>
+        <td width=85%>
+            <code>examPasses &gt;= totalStudents</code></td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> is 
+             <u>more than or equal to</u> <code> 
+              totalStudents</code>>, the  comparison would return 
+              <code>true</code> as a result.</td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>If <code>examPasses</code> is 
+            <u>less than</u> <code>totalStudents</code>, 
+            the comparison  would return <code>false</code>
+            as a result.</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>To summarise, JavaScript understands the following comparison operators:</p>
+
+<table width=100%>
+    <tr>
+        <td width=20%>&nbsp;</td>
+        <td width=20%><code>==</code></td>
+        <td width=60%>'is equal to'</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><code>!=</code></td>
+        <td>'is NOT equal to'</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><code>&lt;</code></td>
+        <td>'is less than'</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><code>&gt;</code></td>
+        <td>'is greater than'</td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td><code>&lt;=</code></td>
+        <td>'is less than or equal to'</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><code>&gt;=</code></td>
+        <td>'is greater than or equal to'</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><h2>If-Else Statements in JavaScript</h2></p>
+
+<p>Much of the power of programming languages comes from their ability to respond in different ways depending upon the data they are given.</p>
+
+<p>Thus all programming languages include statements which make 'decisions' based upon data.</p>
+
+<p>One form of decision-making statement is the <code> If...Else</code> statement.</p>
+
+<p>It allows us to make decisions such as:</p>
+
+<table width=80%>
+    <tr>
+        <td width=15%>&nbsp;</td>
+        <td width=85%>If I have more than £15 left in my account, 
+             I'll go to the cinema.</td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>Otherwise I'll stay at home and watch television.</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>This might be expressed in logical terms as:</p>
+
+<table width=80%>
+    <tr>
+        <td width=15%>&nbsp;</td>
+        <td width=85%>If ( money &gt; 15)  go_to_cinema</td>
+    </tr>
+    <tr>
+        <td colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>Else  watch_television</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>The If-Else statement in JavaScript has the following syntax:</p>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>if (condition)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=10%>&nbsp;</td>
+        <td width=10%>&nbsp;</td>
+        <td width=80%>statement;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>statement</td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>else</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>statement;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>statement</td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>};</td>
+    </tr>
+</table>
+</code>
+
+<p>The condition is the information on which we are basing the decision. In the example above, the condition would be whether we have more than £15. If the condition is true, the browser will carry out the statements within the <code>if...</code> section; if the condition is false it will carry out the statements within the <code>else...</code> section.</p>
+
+<p>The <code>if...</code> part of the statement can be used on its own if required. For example:</p>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>if (condition)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=10%>&nbsp;</td>
+        <td width=10%>&nbsp;</td>
+        <td width=80%>statement;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>statement</td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>};</td>
+    </tr>
+</table>
+</code>
+
+<p>Note the positioning of the semi-colons.</p>
+
+<p>If you are using both the <code>if...</code> and the <code>else...</code> parts of the statement, it is important NOT to put a semi-colon at the end of the <code>if...</code> part. If you do, the <code>else...</code> part of the statement will never be used.</p>
+
+<p>A semi-colon is normally placed at the very end of the <code>if...else... </code> statement, although this is not needed if it is the last or only statement in a function.</p>
+
+<p>&nbsp;</p>
+
+<p>A practical If-Else statement in JavaScript might look like this:</p>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>if (score > 5)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=10%>&nbsp;</td>
+        <td width=10%>&nbsp;</td>
+        <td width=80%>alert("Congratulations!")</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>else</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td> alert("Shame - better luck next time")</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>};</td>
+    </tr>
+</table>
+</code>
+
+<p>&nbsp;</p>
+
+<p><h2>The <code>for</code> Loop</h2></p>
+
+<P>A <code>for</code> loop allows you to carry out a particular operation a fixed number of times.</P>
+
+<P>The <code>for</code> loop is controlled by setting three values:</P>
+
+<table width=100%>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>-</td>
+        <td width=90%>an initial value</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>-</td>
+        <td>a final value</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>-</td>
+        <td>an increment</td>
+    </tr>
+</table>
+
+<P>&nbsp;</P>
+
+<P>The format of a <code>for</code> loop looks like this:</P>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>for (initial_value; final_value; increment)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=90%>statement(s);</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+</table>
+</code>
+
+<P>&nbsp;</P>
+
+<P>A practical <code>for</code> loop might look like this:</P>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>for (x = 0; x &lt;= 100; x++)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=90%>statement(s);</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+</table>
+</code>
+
+<P>&nbsp;</P>
+
+<P>Note that:</P>
+
+<table width=80%>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5% valign="top">*</td>
+        <td width=90%>The loop condition is tested using a variable, 
+            <code>x</code>, which is initially set to 
+             the start value (<code>0</code>) and then 
+             incremented until it reaches the final value 
+             (<code>100</code>).</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td valign="top">*</td>
+        <td>The variable may be either incremented or decremented.</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td valign="top">*</td>
+        <td>The central part of the condition, the part specifying 
+            the final value, must remain true throughout the required 
+            range. In other words, you could not use <code>x = 100</code> 
+            in the <code>for</code> loop above because then the 
+            condition would only be true when x was either 0 or 100, 
+            and not for all the values in between. Instead you should 
+            use <code>x &lt;= 100</code> so that the 
+            condition remains true for all the values between 0 and 
+            100. </td>
+    </tr>
+</table>
+
+<P>&nbsp;</P>
+
+<p>Here are some practical examples of <code>for</code> loops.</p>
+
+<p>The first example is a simple loop in which a value is incremented from 0 to 5, and reported to the screen each time it changes using an alert box. The code for this example is:</p>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>for (x = 0; x &lt;= 5; x++)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=90%>alert('x = ' + x);</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+</table>
+</code>
+
+<form name="loopExamples">
+<p><input type=button name="count_up" value="Count Up" onClick="countUp()">
+Click here to see this example working.</p>
+
+
+<p>The second example is the same except that the value is decremented from 5 to 0 rather than incremented from 0 to 5. The code for this example is:</p>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>for (x = 5; x &gt;= 0; x--)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=90%>alert('x = ' + x);</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+</table>
+</code>
+
+
+<p><input type=button name="count_down" value="Count Down" onClick="countDown()">
+Click here to see this example working.</p>
+
+
+<p>&nbsp;</p>
+
+<P>The start and finish values for the loop must be known before the loop starts.</P>
+
+<P>However, they need not be written into the program; they can, if necessary, be obtained when the program is run.</P>
+
+<P>For example:</P>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>
+        var initialValue = prompt("Please enter initial value", "");</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>
+         var finalValue = prompt("Please enter final value", "");</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>
+            for (x = initialValue; x &lt;= finalValue; x++)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=90%>statement(s);</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+</table>
+</code>
+
+<P>In this example, the user is prompted to type-in two numbers which are then assigned to the variables <code>initialValue</code> and <code>finalValue</code>. The loop then increments from <code>initialValue</code> to <code>finalValue</code> in exactly the same way as if these values had been written directly into the program.</p>
+
+<P>&nbsp;</P>
+
+<p><h2>The <code>While</code> Loop</h2></P>
+
+<P>Like the <code>for</code> loop, the <code>while</code> loop allows you to carry out a particular operation a number of times.</P>
+
+<P>The format of a <code>while</code> loop is as follows:</P>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>while (condition)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=90%>statement(s);</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+</table>
+</code>
+
+<P>&nbsp;</P>
+
+<P>A practical <code>while</code> loop might look like this:</P>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>var x = 500000;</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>alert("Starting countdown...");</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>while (x &gt; 0)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=90%>x--;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>};</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>alert("Finished!");</td>
+    </tr>
+</table>
+</code>
+
+
+<p>In this example, <code>x</code> is initially set to a high value (<code>500,000</code>). It is then reduced by one each time through the loop using the decrement operator (<code>x--</code>). So long as <code>x</code> is greater than zero the loop will continue to operate, but as soon as <code>x</code> reaches zero the loop condition (<code>x > 0</code>) will cease to be true and the loop will end.</p>
+
+<p>The effect of this piece of code is to create a delay which will last for as long as it takes the computer to count down from 500,000 to 0. Before the loop begins, an 'alert' dialog-box is displayed with the message "Starting Countdown...". When the user clicks the 'OK' button on the dialog-box the loop will begin, and as soon as it finishes another dialog-box will be displayed saying "Finished!". The period between the first dialog box disappearing and the second one appearing is the time it takes the computer to count down from 500,000 to 0.</p>
+
+<p>To see this example working, click here. &nbsp; &nbsp; 
+<input type=button name="delay_loop" value="Delay" onClick="delayLoop()">
+</p>
+
+<P>&nbsp;</P>
+
+<P>The principal difference between <code>for</code> loops and <code>while</code> loops is:</P>
+
+<blockquote>with a <code>while</code> loop, the number of times the loop is to be executed <U>need not be known in advance</U>.</blockquote>
+
+<p><code><P>while</code> loops are normally used where an operation must be carried out repeatedly until a particular situation arises.</P>
+
+<P>For example:</P>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=3>var passwordNotVerified = true;</td>
+    </tr>
+    <tr>
+        <td colspan=4>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=3>while (passwordNotVerified == true)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=3>{</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td colspan=2>
+            var input = prompt("Please enter your password", "");</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td colspan=2>if (input == password)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=85%> passwordNotVerified = false;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td colspan=2>else</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>alert("Invalid password - try again")</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=3>}</td>
+    </tr>
+</table>
+</code>
+
+<p>In this example, the variable <code>passwordNotVerified</code> is initially set to the Boolean value <code>true</code>. The user is then prompted to enter a password, and this password is compared with the correct password stored in the variable called <code>password</code>. If the password entered by the user matches the stored password, the variable <code>passwordNotVerified</code> is set to <code>false</code> and the <code>while</code> loop ends. If the password entered by the user does not match the stored password, the variable <code>passwordNotVerified</code> remains set to <code>true</code> and a warning message is displayed, after which the loop repeats.</p>
+ 
+<p>To try this piece of code, click here. &nbsp; &nbsp; 
+<input type=button name="check_password" value="Check Password" onClick="checkPassword()"></p>
+
+<p>PS The password is <code>CS7000</code> - and don't forget that the 'CS' must be capitalised.</p>
+
+<P>&nbsp;</P>
+
+<P><h2>Testing Boolean Variables</h2></P>
+
+<P>In the <code>while</code> loop example above we used the line:</P>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;
+<code>var passwordNotVerified = true;</code></P>
+
+<P>and then tested this variable in a conditional statement as follows:</P>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;
+<code>while (passwordNotVerified == true)</code>
+
+<P>We could also have written the conditional statement like this:</P>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;
+<code>while(passwordNotVerified)</code></P>
+
+<p>In other words, if we don't specify <code>true</code> or <code>false</code> in a conditional statement, the JavaScript interpreter will assume we mean <code>true</code> and test the variable accordingly.</p>
+
+<p>This allows us to make our code a little shorter and, more importantly, to make it easier for others to understand. The line:</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;
+<code>while(passwordNotVerified)</code></P>
+
+<p>is much closer to the way in which such a condition might be expressed in English than:</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;
+<code>while(passwordNotVerified == true)</code></P>
+
+<P>&nbsp;</P>
+
+<p><h2>Logical Operators</h2></P>
+
+<P>We have met a number of operators that can be used when testing conditions, e.g., == , &lt; ,  &gt; ,  &lt;= , &gt;= .</P>
+
+<P>Two more operators that are particularly useful with <code>while</code> loops are:</P>
+
+<table width=80%>
+    <tr>
+        <td width=30%>&nbsp;</td>
+        <td width=30%><code>&amp;&amp;</code></td>
+        <td width=45%>Logical AND</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><code>||</code></td>
+        <td>Logical OR</td>
+    </tr>
+</table>
+
+<P>These operators are used to combine the results of other conditional tests.</P>
+
+<P>For example:</P>
+
+<table>
+    <tr>
+        <td width=10%>&nbsp;</td>
+        <td width=10%>&nbsp;</td>
+        <td width=80%><code>
+               if (x &gt; 0 &amp;&amp; x &lt; 100)</code></td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>means...</td>
+    </tr>
+        <td width=10%>&nbsp;</td>
+        <td width=10%>&nbsp;</td>
+        <td width=80%><code>
+               if x is greater than 0 and less than 100...</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+        <td>&nbsp;</td>
+        <td colspan=2>Placing the <code>
+               &amp;&amp;</code> between the two conditions 
+               means that the <code>
+               if</code> statement will only be carried out if
+               BOTH conditions are true. If only one of the 
+               conditions is true (e.g., x is greater than 0 
+               but also greater than 100) the condition will
+               return false and the <code>
+               if</code> statement won't be carried out.</td>
+    </tr>
+</table>
+
+<P>Similarly:</P>
+
+<table>
+    <tr>
+        <td width=10%>&nbsp;</td>
+        <td width=10%>&nbsp;</td>
+        <td width=80%><code>
+               if (x == 0 || x == 1)</code></td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>means...</td>
+    </tr>
+        <td width=10%>&nbsp;</td>
+        <td width=10%>&nbsp;</td>
+        <td width=80%><code>
+               if x is 0 or x is 1...</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+        <td>&nbsp;</td>
+        <td colspan=2>Placing the <code>
+               ||</code> between the two conditions 
+               means that the <code>
+               if</code> statement will be executed if EITHER 
+               of the conditions are true.</td>
+    </tr>
+</table>
+
+<P>&nbsp;</P>
+
+<P>The ability to combine conditions in this way can be very useful when setting the conditions for <code>while</code> loops.</P>
+
+<P>For example:</P>
+
+<code>
+<table width=100%>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>var amount = prompt
+            ("Please enter a number between 1 and 9", "");</td>
+    </tr>
+    <tr>
+        <td colspan=3>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>while (amount < 1 || amount > 9)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>{</td>
+    </tr>
+    <tr>
+        <td width=5%>&nbsp;</td>
+        <td width=5%>&nbsp;</td>
+        <td width=90%>alert("Number must be between 1 and 9");</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>amount = prompt
+            ("Please enter a number between 1 and 9", "");</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan=2>}</td>
+    </tr>
+</table>
+</code>
+
+<p>In this example, the variable <code>amount</code> is initially set to the value typed-in by the user in response to the 'prompt' dialog-box. If the amount entered by the user is between 1 and 9, the loop condition becomes <code>false</code> and the loop ends. If the amount entered by the user is less than 1 or greater than 9, the loop condition remains <code>true</code> and a warning is displayed, after which the user is prompted to enter another value.</p>
+ 
+<p>To try this piece of code, click here. &nbsp; &nbsp; 
+<input type=button name="check_number" value="Check Number" onClick="checkNumber()"></p>
+</form>
+
+<p>Note that if you enter a correct value immediately, the <code>while</code> loop never executes. The condition is false the first time it is tested, so the loop never begins.</p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,610 @@
+<html>
+<head>
+<title>Javascript Lecture Notes</title>
+
+<script language="JavaScript">
+<!--
+function identifyBrowserName()
+{
+	alert(navigator.appName);
+}
+function identifyBrowserCode()
+{
+	alert(navigator.appCodeName);
+}
+function identifyBrowserVersion()
+{
+	alert(navigator.appVersion);
+}
+function identifyPlatform()
+{
+	alert(navigator.platform);
+}
+function showExample()
+{
+    var parameters = "height=200,width=400,menubar=yes";
+    newWindow = open("09_JS8Demo.html", "newDocument", parameters);
+}
+//-->
+</script>
+
+<style>
+    code{font-family:courier}
+</style>
+
+</head>
+
+<body background="background_cam.gif">
+
+
+<hr size="1" COLOR="#006699" noshade>
+<font face="Verdana, Arial, Helvetica, sans-serif"><b>
+Part 8
+</b></font>
+<hr size="1" COLOR="#006699" noshade>
+
+<p><h2> Differences between Browsers</h2></p>
+
+<p>Browsers vary considerably in:</p>
+
+<ul>
+    <li><p>The HTML tags they recognise, and the way they 
+           respond to certain HTML tags.</p></li>
+
+    <li><p>The version of the Document Object Model (DOM) 
+           they support.</p></li>
+
+    <li><p>The versions of JavaScript (and other scripting 
+             languages) they support.</p></li>
+</ul>
+
+
+<p>Therefore, creating web pages that will display correctly on all (or even most) browsers is not easy, particularly if the pages contain dynamic material.</p>
+
+<p>However, use of a scripting language such as JavaScript allows us to create pages that will load and run correctly on a wide range of browsers.</p>
+
+<p>&nbsp;</p>
+
+<p>Major differences between browsers include:</p>
+
+<ul>
+
+    <li><p><b>The mechanism used to address elements</b></p>
+
+        <p>Using Dynamic HTML it is possible to modify various
+        attributes of elements - usually style attributes such as
+        size, position, visibility, etc. - using scripts. For this 
+        to work, there has to be a means of uniquely identifying 
+        each element within a web-page so that information can be 
+        sent to it or retrieved from it.</p>
+
+        <p>Some elements - such as forms and their components -
+        are represented in the object hierarchy and can be 
+        addressed directly. However, not all elements are 
+        represented in the object hierarchy, and it was not 
+        considered practical to introduce new objects for each 
+        type of element. Therefore, browser manufacturers 
+        introduced other mechanisms for addressing elements:</p></li>
+        
+    <ul>
+        <li><p><b>Microsoft</b> added the <code>all</code> 
+            object to Internet Explorer. This is an array of all
+            the elements of a web-page, allowing the individual
+            elements to be addressed in the following way:</p>
+
+        <p>&nbsp; &nbsp; &nbsp; <code>
+           document.all.myElement.style.attribute</code></p></li>
+
+        <li><p><b>Netscape</b> added a mechanism whereby any 
+            element could be addressed directly, provided it had
+            been given a name. This allows elements to be 
+            addressed in the following way:</p>
+
+        <p>&nbsp; &nbsp; &nbsp; <code>
+           document.myElement.style.attribute</code></p></li>
+
+         <li><p><b>The World-Wide Web Consortium</b> (W3C) subsequently
+            agreed a standard (part of the DOM Level 1 Standard) whereby   
+            elements are assigned a recognised name and henceforth addresed 
+            directly by that name. For example:</p>
+
+        <p>&nbsp; &nbsp; &nbsp; <code>
+           var myElement = document.getElementByID("myElementName")</code></p>
+
+        <p>&nbsp; &nbsp; &nbsp; <code>
+           myElement.style.attribute</code></p>
+
+        <p>This standard has been adopted in newer browsers (e.g., 
+           Netscape 6), but earlier browsers use one of the proprietary
+           systems described above.</p>
+
+        <p>&nbsp;</p></li>
+    </ul>
+
+    <li><p><b>The use of Divisions and Layers</b></p>
+
+        <p>The <code>&lt;div&gt; 
+        </code>tag is recognised by both Internet Explorer 
+        and Netscape Navigator, but they offer different 
+        levels of support for it:</p>
+    <ul>
+        <li><p>In <u>Internet Explorer 4 & 5</u> and <u>Netscape 
+            Navigator 6</u>, divisions are dynamic (i.e., they can 
+            be repositioned and/or have their size, visibility, etc.,
+            modified).</p></li>
+
+        <li><p>In <u>Netscape Navigator 4</u>, divisions can only 
+             be static.</p></li>
+    </ul>
+
+        <p>The <code>&lt;layer&gt;</code> tag is specific to 
+        <u>Netscape Navigator</u> and was supported on versions 
+        of Netscape Navigator prior to version 6. On these browsers 
+        it offers similar functionality to that available using 
+        divisions in Internet Explorer, including 
+        dynamic-repositioning, etc..</p>
+
+        <p>&nbsp;</p></li>
+
+    <li><p><b>Event handling</b></p>
+    <ul>
+        <li><p>In <u>Internet Explorer</u>, events propagate 
+            <i>up</i> the object hierarchy.</p>
+
+            <p>For example, if the mouse is clicked whilst over a 
+            form button, the click event is received by the button 
+            object and then passed on to objects further up the 
+            hierarchy, such as the Document object.</p>
+
+            <p>&nbsp;</p></li>
+
+        <li><p>In <u>Netscape Navigator</u>, events propagate <i>down</i>
+                the object hierarchy.</p>
+
+            <p>For example, if the mouse is clicked whilst over a 
+            form button, the click event is received by the Document 
+            object and passed down to the button object.</p>
+
+            <p>(In Netscape Navigator, it is possible to 'capture' 
+            events at the Document level and thus prevent them 
+            being sent down the hierarchy to form elements such 
+            as buttons; this can be used, for example, to disable
+            all the elements in a form until such time as they are 
+            required.)</p>
+    </ul>
+</ul>
+ 
+<p>&nbsp;</p>
+
+<p>Browsers also differ in the support they provide for the JavaScript language.  The level of compatibility offered by the various versions of Netscape and Internet Explorer (for JavaScript and Jscript respectively) is summarised below:</p>
+
+<table width="80%">
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center"><b>Navigator version</b></td>
+        <td align="center"><b>JavaScript version</b></td>
+        <td colspan="2"><b>Comments</b></td>
+    </tr>
+    <tr>
+        <td width="10%">&nbsp;</td>
+        <td width="15%">&nbsp;</td>
+        <td width="15%">&nbsp;</td>
+        <td width="10%">&nbsp;</td>
+        <td width="50%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center" valign=top>2.0</td>
+        <td align="center" valign=top>1.0</td>
+        <td colspan="2">First version of JavaScript.</br>
+            Included some bugs/limitations, e.g.:</td>
+    </tr>
+    <tr>
+        <td colspan="3">&nbsp;</td>
+        <td align="center">*</td>
+        <td><code>window.open()</code>
+            method doesn't work on Mac and Unix platforms.</td>
+    </tr>
+    <tr>
+        <td colspan="3">&nbsp;</td>
+        <td align="center">*</td>
+        <td>Poor support for arrays.</td>
+    </tr>
+    <tr>
+        <td colspan="3">&nbsp;</td>
+        <td align="center">*</td>
+        <td><code>onLoad()</code> event 
+            triggered by re-sizing.</td>
+    </tr>
+        <td colspan="5">&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center" valign=top>3.0</td>
+        <td align="center" valign=top>1.1</td>
+        <td colspan="2">Support for <code>&lt;src&gt; 
+            </code> attribute, allowing use of external JavaScript source 
+             code.</td>
+    </tr>
+        <td colspan="5">&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center" valign=top>4.0 - 4.05</td>
+        <td align="center" valign=top>1.2</td>
+        <td colspan="2">Support for dynamic positioning of elements.</bR>
+            Signed scripts for security.</td>
+    </tr>
+        <td colspan="5">&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center" valign=top>4.06 - 4.5</td>
+        <td align="center" valign=top>1.3</td>
+        <td colspan="2">ECMAScript 1.0 Compatible</td>
+    </tr>
+        <td colspan="5">&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center" valign=top>5.0</td>
+        <td align="center" valign=top>1.4</td>
+        <td colspan="2">ECMAScript 2.0 Compatible</br>
+            More advanced error-checking and control functions.</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<table width="80%">
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center"><b>Explorer version</b></td>
+        <td align="center" ><b>JScript version</b></td>
+        <td><b>Comments</b></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center" valign=top>3.0</td>
+        <td align="center" valign=top>1.0</td>
+        <td valign=top>Used a separate <i>JScript Scripting Engine</i> which 
+            could be upgraded separately from the browser. Many versions in 
+            use.</bR>
+            Particular problems when handling image attributes.</td>
+    </tr>
+    <tr>
+        <td width="10%">&nbsp;</td>
+        <td width="15%">&nbsp;</td>
+        <td width="15%">&nbsp;</td>
+        <td width=60%>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center" valign=top>4.0 - 4.5</td>
+        <td align="center" valign=top>3.0</td>
+        <td valign=top>ECMAScript 1.0 Compatible (and therefore largely 
+            identical to JavaScript 1.3).<bR> Support for 
+            <code>&lt;src&gt;</code> attribute 
+            (but not until v3.02, and even then with bugs), allowing use 
+            of external JavaScript source code.<bR>
+            Support for dynamic positioning of elements.</td>
+    </tr>
+    <tr>
+        <td colspan="4">&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="center" valign=top>5.0</td>
+        <td align="center" valign=top>5.0</td>
+        <td valign=top>ECMAScript 2.0 Compatible (and therefore largely 
+            identical to JavaScript 1.4)</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>In addition to the differences listed above, there are many minor and not-so-minor differences in the way the various browsers suppport and interpret HTML and JavaScript. Most of these will be listed in any good HTML or JavaScript reference book.</p>
+ 
+<p>&nbsp;</p>
+
+<h3>Obtaining Browser Parameters</h3>
+
+<p>We can tackle differences between browsers using the <i>Navigator</i> object</p>
+
+<p>This object returns properties related to the browser, such as its type, version, etc.. It also returns properties indicating the platform on which the browser is running (Macintosh, Windows PC, Linux PC, etc.),</p>
+
+<p>&nbsp;</p>
+
+<p>Navigator object properties include:</p>
+
+<form name="navigatorExamples">
+<table width="80%">
+  <tr>
+    <td>&nbsp;</td>
+    <td valign="top"><code>
+              appName</code></td>
+    <td colspan="2">Returns a string representing the browser. 
+            For example, the code: </td>
+  </tr>
+  <tr>
+    <td width="10%">&nbsp;</td>
+    <td width="20%">&nbsp;</td>
+    <td width="10%">&nbsp;</td>
+    <td width="60%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;</td>
+    <td><code>alert(navigator.appName);</code></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2">should return a string containing the name of the 
+            browser you are using (e.g., "Microsoft Internet Explorer" 
+            or "Netscape")</td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2"><form> Click here to see this piece of code in operation. 
+                 <input type="button" value="Get Navigator Name" 
+                 onClick="identifyBrowserName()" /></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td valign="top"><code>
+                 appCodeName</code></td>
+    <td colspan="2">Returns a string representing the code name of the
+             browser. For example, the code: </td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;</td>
+    <td><code>
+                alert(navigator.appCodeName);</code></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2">should return a string containing the code name of the 
+            browser you are using (e.g., "Mozilla")</td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2">Click here to see this piece of code in operation. 
+                 <input type="button" value="Get Navigator Code Name" 
+                 onClick="identifyBrowserCode()" /></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td valign="top"><code>
+                    appVersion</code></td>
+    <td colspan="2"> Returns a string representing the browser version. 
+             For example, the code: </td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;</td>
+    <td><code>
+                alert(navigator.appVersion);</code></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2">should return a string indicating which version of
+            the browser you are using (e.g., "4.0 (compatible: MSIE 5.0)")</td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2">Click here to see this piece of code in operation. 
+                 <input type="button" value="Get Navigator Version" 
+                 onClick="identifyBrowserVersion()" /></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td valign="top"><code>
+                   platform</code></td>
+    <td colspan="2">Returns a string representing the computer platform on 
+              which the browser is running. For example, the code: </td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">&nbsp;</td>
+    <td><code>
+                alert(navigator.platform);</code></td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2">should return a string containing the name of the 
+            platform on which the browser is running (e.g., "Win32" or 
+            "MacPPC")</td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2">Click here to see this piece of code in operation. 
+                 <input type="button" value="Get Platform Type" 
+                 onClick="identifyPlatform()" /></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Using some or all of the Navigator object properties, It is possible to determine which browser is being used and then generate the appropriate code.</p>
+</form>
+</p>
+
+<p>This example includes a movable bar that has to be coded differently depending upon which browser it is being viewed under. The web-page tests to see what browser is being used, then generates appropriate code. The code used is quite simple and may not accommodate all browsers, but it should work under most widely-used browsers.</p>
+
+<p>Have a look at the source code of the example to see how it works. Note the following points:</p>
+
+<ul>
+    <li><p>The page contains a script in the 
+        <code>&lt;head&gt</code> section. 
+        The script declares two global variables and two 
+        functions. The purpose of these is discussed below.</p></li>
+
+    <li><p>The body of the page contains several sections:</p>
+
+    <ul>
+        <li><p>A piece of JavaScript code that uses the
+            <code>navigator</code>
+            object to determine what browser is being used. If the
+            browser is found to be Netscape Navigator, a further test
+            is  performed to find out what version is being used. This
+            is done using the <code>
+            charAt()</code> method to obtain the first character
+            of the string (which is always the browser version 
+            number). Once obtained, this information is stored 
+            in one of the global variables, <code>browserType</code>.</p>
+
+        <li><p>This is followed by another piece of JavaScript code 
+            that uses <code> 
+            document.write()</code> methods to create a new page. 
+            The content of the page varies depending upon the browser 
+            used (as determined by the previous piece of code): if 
+            the browser is Netscape Navigator 4, the page content 
+            is created using a <code> 
+            &lt;layer&gt;</code> tag; if the browser is Internet 
+            Explorer or Netscape Navigator 6, the page content is 
+            created using a <code> 
+            &lt;div&gt;</code> tag.</p></li>
+
+        <li><p>Following this is another piece of code that creates
+            a form with two buttons. This code works equally well
+            with all the target browsers, so it can be written 
+            directly to the document without checking the browser 
+            type.</p></li>
+
+        <li><p>Finally, there is a piece of code that checks the 
+            browser type again and writes either a closing 
+            <code">&lt;/layer&gt;</code> tag or a closing <code> 
+            &lt;/div&gt;</code> tag to the page.</p></li></p></li>
+    </ul>
+
+        <p>Because these pieces of code are placed in the body of 
+        the document they will be executed automatically when the 
+        document is loaded.</p></li>
+
+    <li><p>Having created the page, the division or layer can 
+        be moved around using the two functions in the 
+        <code>&lt;head&gt</code> section of the document. These 
+        interrogate the global variable <code>browserType</code> 
+        to find out what browser is in use, then use one of
+        the following techniques to move the division or layer:</p>
+
+    <ul>
+        <li><p>If the code is being viewed under <u>Internet 
+            Explorer</u>, the <i>division</i> can be moved by altering 
+            the value of the <code>
+            pixelLeft</code> attribute in its style.</p>
+ 
+            <p>In order to locate the division, the code uses the 
+            <code>document.all</code> array. Thus the <code>pixelLeft</code> 
+            attribute of the division called <code>myDivision</code> 
+            can be identified using the following code:</p>
+
+            <p><code>
+            &nbsp;&nbsp;&nbsp;&nbsp;document.all.myDivision.style.pixelLeft
+            </code></p>
+
+            <p>&nbsp;</p></li>
+
+        <li><p>If the code is being viewed under <u>Netscape Navigator 
+            4</u>, the <i>layer</i> can be moved by altering the value of its
+            <code>pageX</code> 
+            attribute.</p>
+
+            <p>Netscape Navigator does not support the 
+            <code>document.all</code> array used in Internet Explorer. 
+            However, <code>&lt;layer&gt</code> is represented as an object 
+            in the Document Object Model. Therefore the value of the 
+            <code>pageX</code> attribute of the layer called 
+            <code>myLayer</code> can be read or written simply by 
+            specifiying it in terms of its place within the object 
+            hierarchy, e.g.:</p>
+
+            <p><code>
+            &nbsp;&nbsp;&nbsp;&nbsp;document.mylayer.pageX
+            </code></p>
+
+            <p>&nbsp;</p></li>
+
+        <li><p>If the code is being viewed under <u>Netscape Navigator 
+            6</u>, the <i>division</i> can be moved by altering 
+            the value of the <code>
+            left</code> attribute in its style.</p>
+
+            <p>However, unlike Internet Explorer, Netscape Navigator 6
+            does not support the <code>
+            document.all</code> array, nor does it provide a special
+            object for the <code>&lt;div&gt
+            </code> tag as earlier versions did for the 
+            <code>&lt;layer&gt</code> tag.</p>
+
+            <p>Instead, Netscape Navigator 6 uses the 
+            <code>getElementByID()</code> method, in accordance with 
+            the current World-Wide Web Consortium (W3C) standard. The 
+            <code>getElementByID()</code> method 
+            is called and given the name of the division as a parameter, 
+            and the result is stored in a variable. Once this has been 
+            done, the variable can be used to address the division and 
+            its style attributes, e.g.:</p>
+
+
+            <p><code>
+            &nbsp;&nbsp;&nbsp;&nbsp;var myDiv =
+            document.getElementByID("myDivision");<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;...<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;mydiv.style.left
+            </code></p>
+
+            <p>One slight complication with Netscape Navigator 6 is 
+            that the <code>left</code>
+            style attribute is stored with the suffix 'px' (meaning
+            pixels). This is also in accordance with the current 
+            W3C standard. Before any arithmetical operations can be
+            performed on the <code>left</code> attribute, the suffix 
+            must be removed. This is done using the <code>parseInt()</code>
+            method, which extracts integers from strings.</p></li>
+    </ul>
+</ul>
+
+<p>&nbsp;</p>
+
+</body>
+</html>
